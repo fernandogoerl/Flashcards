@@ -1,0 +1,5 @@
+export { default as AddCard } from './AddCard'
+export { default as DeckDetail } from './DeckDetail'
+export { default as Decks } from './Decks'
+export { default as NewDeck } from './NewDeck'
+export { default as Quiz } from './Quiz'
