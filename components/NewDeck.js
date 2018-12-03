@@ -6,6 +6,7 @@ import {
 	KeyboardAvoidingView,
 	TouchableOpacity,
 } from 'react-native'
+import { NavigationActions, StackActions } from 'react-navigation'
 import { blue } from '../constants/colors'
 import { globalStyles } from '../constants/globalStyles'
 import { saveDeckTitle } from '../utils/api'
@@ -24,7 +25,19 @@ class NewDeck extends Component {
 
 	handleSaveButton = () => {
 		return saveDeckTitle(this.state.inputText)
-			.then(navigate('DeckDetail', { deckId: deckId }))
+			.then(this.goToDeckDetail(this.state.inputText))
+	}
+
+	goToDeckDetail = (deckId) => {
+		const { navigate, dispatch } = this.props.navigation
+		const resetAction = StackActions.reset({
+			index: 0,
+			actions: [
+				NavigationActions.navigate({ routeName: 'Home', params: { deckId }})
+			]
+		})
+		dispatch(resetAction)
+		navigate('DeckDetail', { deckId: deckId })
 	}
 
 	render() {
