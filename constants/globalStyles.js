@@ -31,5 +31,14 @@ export const globalStyles = StyleSheet.create({
 		marginBottom: 20,
 		width: 250
 	},
+	input: {
+		height: 40,
+		width: 300,
+		paddingLeft: 8,
+		paddingRight: 8,
+		paddingTop: 4,
+		paddingBottom: 4,
+		marginBottom: 20,
+	},
 
 })

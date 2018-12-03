@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native'
 import { getAllDecks } from '../utils/api'
-
 import { blue, white } from '../constants/colors'
 
 
@@ -38,11 +37,9 @@ class Decks extends Component {
 		return this.setState({ decks })
 	}
 
-	openDeckDetail = ( deckId ) => {
-		const { navigate } = this.props.navigation
-
-		return navigate('DeckDetail', { deckId })
-	}
+	openDeckDetail = ( deckId ) => (
+		this.props.navigation.navigate('DeckDetail', { deckId })
+	)
 
 	render() {
 		const { decks } = this.state
