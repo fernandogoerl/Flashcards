@@ -8,11 +8,23 @@ import {
 } from 'react-native'
 import { blue } from '../constants/colors'
 import { globalStyles } from '../constants/globalStyles'
+import { saveDeckTitle } from '../utils/api'
 
 
 class NewDeck extends Component {
 	state = {
 		inputText: '',
+	}
+
+	handleChange = (inputText) => {
+		this.setState(() => ({
+			inputText
+		}))
+	}
+
+	handleSaveButton = () => {
+		return saveDeckTitle(this.state.inputText)
+			.then(navigate('DeckDetail', { deckId: deckId }))
 	}
 
 	render() {
@@ -24,6 +36,7 @@ class NewDeck extends Component {
 
 				<TextInput
 					autoFocus={true}
+					onChangeText={this.handleChange}
 					value={inputText}
 					style={globalStyles.input}
 					underlineColorAndroid={blue}
@@ -31,6 +44,7 @@ class NewDeck extends Component {
 				/>
 
 				<TouchableOpacity
+					onPress={this.handleSaveButton}
 					disabled={this.state.inputText === '' ? true : false }>
 					<Text style={globalStyles.button}>Save</Text>
 				</TouchableOpacity>
