@@ -24,8 +24,8 @@ class DeckDetail extends Component {
 			})
 	}
 
-	startQuiz = () => (
-		alert("quiz started")
+	startQuiz = (deckId) => (
+		this.props.navigation.navigate('Quiz', { deckId })
 	)
 
 	handleNewCard = (deckId) => (
@@ -42,7 +42,7 @@ class DeckDetail extends Component {
 					<Text style={[styles.cardCount]}>{deck.questions.length} Cards</Text>
 
 					{deck.questions.length > 0 ? (
-						<TouchableOpacity onPress={() => this.startQuiz()}>
+						<TouchableOpacity onPress={() => this.startQuiz(deck.title)}>
 							<Text style={globalStyles.button}>Start Quiz</Text>
 						</TouchableOpacity>
 					) : (
