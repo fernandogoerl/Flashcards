@@ -10,7 +10,7 @@ Each deck with at least 1 card has the Quiz option where the user can test himse
 
 * In your terminal type: `npm install` or `yarn install` to install the node packages
 * type: `expo start` to start the simulator. This runs the app in the development mode.
-* Use your iOS or Android device and the QR code scanner (camera) to start the app
+* Use your Android or iOS device and the QR code scanner (camera) to start the app
 
 ## Tested for
 

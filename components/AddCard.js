@@ -50,20 +50,21 @@ class AddCard extends Component {
 			<KeyboardAvoidingView behavior='padding' style={globalStyles.center}>
 				<Text style={[styles.header]}>Add a new Card</Text>
 
-				<Text style={[styles.label]}>Your question</Text>
+				<Text style={[styles.label]}>Question</Text>
 				<TextInput
+					autoFocus={true}
 					style={globalStyles.input}
 					onChangeText={question => this.setState({ question })}
 					value={this.question}
-					placeholder={'Question'}
+					underlineColorAndroid={blue}
+					selectionColor={blue}
 				/>
 
-				<Text style={[styles.label]}>Your Answer</Text>
+				<Text style={[styles.label]}>Answer</Text>
 				<TextInput
 					style={globalStyles.input}
 					onChangeText={answer => this.setState({ answer })}
 					value={this.answer}
-					placeholder={'Answer'}
 					underlineColorAndroid={blue}
 					selectionColor={blue}
 				/>
