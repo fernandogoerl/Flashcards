@@ -6,6 +6,10 @@ import { getDeck } from '../utils/api'
 
 
 class DeckDetail extends Component {
+	static navigationOptions = ({ navigation }) => ({
+		title: `${navigation.state.params.deckId} Deck`,
+	})
+
 	state = {
 		deck: {
 			title: '',
@@ -20,6 +24,14 @@ class DeckDetail extends Component {
 			})
 	}
 
+	startQuiz = () => (
+		alert("quiz started")
+	)
+
+	handleNewCard = (deckId) => (
+		this.props.navigation.navigate('AddCard', { deckId })
+	)
+
 	render() {
 		const { deck } = this.state
 
@@ -27,17 +39,17 @@ class DeckDetail extends Component {
 			return (
 				<View style={globalStyles.center}>
 					<Text style={[styles.header]}>{deck.title}</Text>
-					<Text style={[styles.subheader]}>{deck.questions.length} Cards</Text>
+					<Text style={[styles.cardCount]}>{deck.questions.length} Cards</Text>
 
 					{deck.questions.length > 0 ? (
-						<TouchableOpacity>
+						<TouchableOpacity onPress={() => this.startQuiz()}>
 							<Text style={globalStyles.button}>Start Quiz</Text>
 						</TouchableOpacity>
 					) : (
 						<Text style={{marginBottom: 20}}>Empty deck</Text>
 					)}
 
-					<TouchableOpacity>
+					<TouchableOpacity onPress={() => this.handleNewCard(deck.title)}>
 						<Text style={globalStyles.button}>Add new card</Text>
 					</TouchableOpacity>
 
@@ -57,7 +69,7 @@ const styles = StyleSheet.create({
 		color: blue,
 		textAlign: 'center'
 	},
-	subheader: {
+	cardCount: {
 		marginBottom: 60,
 		fontSize: 24,
 		color: black,
