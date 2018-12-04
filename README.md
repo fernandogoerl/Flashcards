@@ -1,8 +1,11 @@
 # Flashcards Mobile App
 
 This is a flashcards memory helper mobile app.
+
 The user can create multiple decks.
+
 Each deck can contain multiple cards with a question and an answer.
+
 Each deck with at least 1 card has the Quiz option where the user can test himself.
 
 
@@ -14,8 +17,9 @@ Each deck with at least 1 card has the Quiz option where the user can test himse
 
 ## Tested for
 
-Android OnePlus 6 and Iphone 8
-Using Expo app
+Android OnePlus 6 and Iphone 8.
+
+Using Expo app.
 
 ## Developing
 
@@ -26,6 +30,7 @@ React Native, Native Navigation and Expo
 ### Deploying
 
 $ exp build:android
+
 $ exp build:ios
 
 ## Licensing
