@@ -21,7 +21,10 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "fg.flashcards.udacity"
+    },
+    "android": {
+      "package": "fg.flashcards.udacity"
     }
   }
 }
