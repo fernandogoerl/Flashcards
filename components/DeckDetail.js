@@ -19,18 +19,16 @@ class DeckDetail extends Component {
 	}
 
 	componentDidMount() {
-		getDeck(this.props.navigation.state.params.deckId)
-			.then(( results ) => {
-				this.setState(() => ({ deck : results }))
-			})
+		this.getDeckData()
 	}
 
-	componentDidUpdate() {
+	getDeckData = () => (
 		getDeck(this.props.navigation.state.params.deckId)
-			.then(( results ) => {
-				this.setState(() => ({ deck : results }))
+			.then(( deck ) => {
+				this.setState(() => ({ deck }))
+				return deck;
 			})
-	}
+	)
 
 	startQuiz = (deckId) => {
 		clearLocalNotification()
@@ -44,12 +42,15 @@ class DeckDetail extends Component {
 
 	render() {
 		const { deck } = this.state
+		this.getDeckData()
 
 		if (deck) {
 			return (
 				<View style={globalStyles.center}>
 					<Text style={[styles.header]}>{deck.title}</Text>
-					<Text style={[styles.cardCount]}>{deck.questions.length} Cards</Text>
+					<Text style={[styles.cardCount]}>
+						{deck.questions.length} Cards
+					</Text>
 
 					{deck.questions.length > 0 ? (
 						<TouchableOpacity onPress={() => this.startQuiz(deck.title)}>
