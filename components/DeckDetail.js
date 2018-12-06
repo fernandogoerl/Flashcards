@@ -24,6 +24,13 @@ class DeckDetail extends Component {
 			})
 	}
 
+	componentDidUpdate() {
+		getDeck(this.props.navigation.state.params.deckId)
+			.then(( results ) => {
+				this.setState(() => ({ deck : results }))
+			})
+	}
+
 	startQuiz = (deckId) => (
 		this.props.navigation.navigate('Quiz', { deckId })
 	)
