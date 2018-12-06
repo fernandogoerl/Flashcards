@@ -51,7 +51,7 @@ class Quiz extends Component {
 					{ questionIndex }
 				))
 
-		// this.flipCard()
+		this.flipCard(this.state.showAnswer)
 	}
 
 	handleCorrectAnswer = (questionIndex, deck) => {
