@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, View, StatusBar } from 'react-native';
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
 import { Constants } from 'expo'
 import { Decks, NewDeck, DeckDetail, AddCard, Quiz } from './components'
 import { blue, white } from './constants/colors'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { setLocalNotification } from './utils/notifications'
 
 
 function FlashcardsStatusBar ({backgroundColor, ...props}) {
@@ -91,7 +92,10 @@ const MainNavigator = createStackNavigator({
 	}
 })
 
-export default class App extends React.Component {
+export default class App extends Component {
+	componentDidMount() {
+		setLocalNotification()
+	}
 	render() {
 		return (
 			<View style={{flex:1}}>

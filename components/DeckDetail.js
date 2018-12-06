@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity} from 'react-native'
 import { blue, black } from '../constants/colors'
 import { globalStyles} from '../constants/globalStyles'
 import { getDeck } from '../utils/api'
+import { clearLocalNotification, setLocalNotification } from '../utils/notifications'
 
 
 class DeckDetail extends Component {
@@ -31,9 +32,11 @@ class DeckDetail extends Component {
 			})
 	}
 
-	startQuiz = (deckId) => (
+	startQuiz = (deckId) => {
+		clearLocalNotification()
+			.then(setLocalNotification)
 		this.props.navigation.navigate('Quiz', { deckId })
-	)
+	}
 
 	handleNewCard = (deckId) => (
 		this.props.navigation.navigate('AddCard', { deckId })
